@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+graphite:
+  carbon:
+    pkg: graphite-carbon
+    service:
+      name: carbon-cache
+      enable: True
+      start: True
+  web:
+    pkg: graphite-web
+    service:
+      name:
+      enable: True
+      start: True
+  config: '/etc/graphite'

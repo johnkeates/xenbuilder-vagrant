@@ -1,0 +1,3 @@
+local:
+  "*com":
+    - xenbuild

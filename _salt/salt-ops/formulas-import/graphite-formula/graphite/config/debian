@@ -1,0 +1,4 @@
+/etc/default/graphite-carbon
+
+# Change to true, to enable carbon-cache on boot
+CARBON_CACHE_ENABLED=false

@@ -1,0 +1,20 @@
+file_client: local
+pillar_opts: False
+output_mode: mixed
+master: 127.0.0.1
+
+file_roots:
+  base:
+    - /srv/salt/state/env/base
+    - /srv/salt/state/formulas
+  local:
+    - /srv/salt/state/env/local
+    - /srv/salt/state/env/base
+    - /srv/salt/state/formulas
+
+pillar_roots:
+  base:
+    - /srv/salt/pillar/env/base
+  local:
+    - /srv/salt/pillar/env/local
+    - /srv/salt/pillar/env/base
