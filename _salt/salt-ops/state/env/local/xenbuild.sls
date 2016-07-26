@@ -77,7 +77,6 @@ buildroot-dependencies:
       - php5-cli
       - php5-curl
       - camlp4
-      - cowbuilder
       - cowdancer
       - debian-keyring
       - debootstrap
@@ -87,7 +86,6 @@ buildroot-dependencies:
       - distro-info-data
       - dput
       - equivs
-      - gdebi-core
       - gir1.2-glib-2.0
       - hardening-includes
       - ledit
@@ -137,7 +135,7 @@ buildroot-dependencies:
       - ocaml-base-nox
       - ocaml-compiler-libs
       - ocaml-interp
-      - ocaml-nox
+      - ocaml-findlib
       - patchutils
       - pbuilder
       - python3
@@ -153,12 +151,53 @@ buildroot-dependencies:
       - python3-software-properties
       - python3.4
       - python3.4-minimal
-      - software-properties-common
       - strace
       - t1utils
       - unattended-upgrades
       - unzip
       - wdiff
-      
+
+      # Package requirements according to the configure script
+      - cowbuilder
+      - python-rpm
+      - curl
+      - ocaml-nox
+      - apt-utils
+      - gdebi-core
+      - software-properties-common
+
+      # Debian packages already here
+      - oasis
+      - ocamlify
+      - ocamlmod
+      - libnl-3-200
+      - libodn-ocaml
+      - libodn-ocaml-dev
+      - ocaml-findlib
+      - libfindlib-ocaml
+
+      # Dependencies for the above
+      - libodn-ocaml
+      - liboasis-ocaml
+      - libtype-conv-camlp4-dev
+      - libodn-ocaml-dev
+      - liboasis-ocaml-dev
+
+
 # End xenbuildroot deps
+#========================================================================
+
+
+# Start symlinks to fix MAKEFILE bugs
+#========================================================================
+ocaml-findlib-symlink:
+  file.symlink:
+    # The link we're creating
+    - name: /home/vagrant/buildroot/_build/SRPMS/ocaml-findlib_1.5.5-1.dsc
+    # The target the link points to
+    - target: /home/vagrant/buildroot/SRPMS/ocaml-findlib_1.5.5-1.dsc
+    - makedirs: True # we have to create dirs if they don't exist yet
+    - user: vagrant # because that's the user we will build as
+
+# End symlinks to fix MAKEFILE bugs
 #========================================================================

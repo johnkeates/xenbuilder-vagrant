@@ -1,3 +1,0 @@
-graphite:
-  lookup:
-    master: graphite-master

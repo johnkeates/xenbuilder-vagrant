@@ -1,3 +1,4 @@
 local:
-  "*com":
+  "*":
     - xenbuild
+    - ignorefile
