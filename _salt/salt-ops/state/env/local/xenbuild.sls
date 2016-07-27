@@ -157,6 +157,20 @@ buildroot-dependencies:
       - unzip
       - wdiff
 
+      - camlp4
+      - camlp4-extra
+      - gawk
+      - libncurses5-dev
+      - libsigsegv2
+      - libtinfo-dev
+      - m4
+      - ocaml-base-nox
+      - ocaml-compiler-libs
+      - ocaml-interp
+      - ocaml-native-compilers
+      - ocaml-nox
+      - libcothreads-ocaml-dev
+
       # Package requirements according to the configure script
       - cowbuilder
       - python-rpm
@@ -184,20 +198,40 @@ buildroot-dependencies:
       - liboasis-ocaml-dev
 
 
+      # XAPI
+      - libcmdliner-ocaml-dev
+      - omake
+
+
 # End xenbuildroot deps
 #========================================================================
 
 
 # Start symlinks to fix MAKEFILE bugs
 #========================================================================
-ocaml-findlib-symlink:
-  file.symlink:
-    # The link we're creating
-    - name: /home/vagrant/buildroot/_build/SRPMS/ocaml-findlib_1.5.5-1.dsc
-    # The target the link points to
-    - target: /home/vagrant/buildroot/SRPMS/ocaml-findlib_1.5.5-1.dsc
-    - makedirs: True # we have to create dirs if they don't exist yet
-    - user: vagrant # because that's the user we will build as
+# ocaml-findlib-symlink:
+#   file.symlink:
+#     # The link we're creating
+#     - name: /home/vagrant/buildroot/_build/SRPMS/ocaml-findlib_1.5.5-1.dsc
+#     # The target the link points to
+#     - target: /home/vagrant/buildroot/SRPMS/ocaml-findlib_1.5.5-1.dsc
+#     - makedirs: True # we have to create dirs if they don't exist yet
+#     - user: vagrant # because that's the user we will build as
+
+# ++++++++++++++
+# ++++++++++++++
+
+# This doesn't seem to do it, instead, after the first make, symlink everything!
+# ++++++++++++++
+# Execute: ln -s /home/vagrant/buildroot/SRPMS/* /home/vagrant/buildroot/_build/SRPMS/
+# ++++++++++++++
+# ERrors about existing items are fine.
+
+# ++++++++++++++
+# ++++++++++++++
+#ocaml-findlib_1.5.5-1.dsc -> ../../SRPMS/ocaml-findlib_1.5.5-1.dsc
+
+
 
 # End symlinks to fix MAKEFILE bugs
 #========================================================================
