@@ -200,16 +200,36 @@ buildroot-dependencies:
 
       # XAPI
       - libcmdliner-ocaml-dev
+      - libounit-ocaml-dev
+      - libxmlm-ocaml-dev
+      - libuuidm-ocaml-dev
+
       - omake
 
 
 # End xenbuildroot deps
 #========================================================================
 
+# Fix SPECS/ocaml-findlib.spec
+
+#diff --git a/SPECS/ocaml-findlib.spec b/SPECS/ocaml-findlib.spec
+# index f51c59c..f7a91fa 100644
+# --- a/SPECS/ocaml-findlib.spec
+# +++ b/SPECS/ocaml-findlib.spec
+# @@ -105,9 +105,6 @@ rm -rf $RPM_BUILD_ROOT
+#  %exclude %{_libdir}/ocaml/findlib/*.mli
+#  %exclude %{_libdir}/ocaml/findlib/Makefile.config
+#  %{_libdir}/ocaml/num-top
+# -%if !%opt
+# -%config(noreplace) %{_sysconfdir}/prelink.conf.d/ocaml-ocamlfind.conf
+# -%endif
+#  %{_libdir}/ocaml/bytes/bytes.a
+#  %{_libdir}/ocaml/bytes/bytes.cma
+#  %{_libdir}/ocaml/bytes/bytes.cmi
 
 # Start symlinks to fix MAKEFILE bugs
 #========================================================================
-# ocaml-findlib-symlink:
+# srpm-rpm-symlink:
 #   file.symlink:
 #     # The link we're creating
 #     - name: /home/vagrant/buildroot/_build/SRPMS/ocaml-findlib_1.5.5-1.dsc
